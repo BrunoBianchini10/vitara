@@ -1,342 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guia de Protocolos e Medicações – Versão para Pacientes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b1020;--text:#e8eeff;--muted:#b9c2df;--chip:#1f2a4d;--chip-brd:#2b3a69;--btn:#7aa2ff;--shadow:0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font:16px/1.7 'Poppins', system-ui, sans-serif;background:var(--bg);color:var(--text)}
-    h1,h3{font-weight:700;line-height:1.2}
-    .container{max-width:1200px;margin:40px auto;padding:0 20px}
-    h1{margin:0 0 10px;font-size:32px;letter-spacing:-0.5px}
-    .muted{color:var(--muted);font-size:15px;margin-bottom:16px;font-weight:300}
-    .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
-    .search{position:relative;flex:1 1 280px}
-    .search input{width:100%;padding:12px 14px;border:none;border-radius:12px;background:#0f1731;color:var(--text);outline:none;box-shadow:inset 0 0 0 1px #233056;font-family:'Poppins',sans-serif;font-size:15px}
-    .btn{border:none;border-radius:12px;padding:10px 16px;background:var(--btn);color:#071229;font-weight:600;cursor:pointer;box-shadow:var(--shadow);font-family:'Poppins',sans-serif;font-size:15px;transition:background .2s}
-    .btn:hover{background:#5c88f7}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-    .chip{padding:8px 14px;border-radius:999px;background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;cursor:pointer;font-weight:500;font-size:14px;transition:background .2s}
-    .chip.active{background:#28355f}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:20px}
-    .card{padding:20px;border-radius:18px;display:flex;flex-direction:column;gap:10px;color:#fff;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
-    .card:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(0,0,0,.45)}
-    .card h3{margin:0;font-size:20px;display:flex;align-items:center;gap:8px;font-weight:600}
-    .pill{font-size:15px;font-weight:400;opacity:.95}
-    .sec{margin:0;font-size:14px;line-height:1.6}
-    .sec b{display:inline-block;width:auto;color:#d0d7ff}
-    .more{margin-top:8px;font-size:14px}
-    details{background:rgba(255,255,255,.04);padding:12px;border-radius:12px}
-    summary{cursor:pointer;user-select:none;font-weight:600;font-size:14px}
-    .empty{display:none;color:var(--muted);text-align:center;padding:30px;font-size:15px;font-weight:300}
-
-    /* Cores por categoria */
-    .Recuperacao{background:#2d4f8d}
-    .Figado{background:#3a6b3f}
-    .Hormonal{background:#6b3a5f}
-    .Imunidade{background:#345b7a}
-    .Estetica{background:#7a3a5b}
-    .Vitaminas{background:#5b4c7a}
-    .Metabolismo{background:#7a5a2f}
-    .Musculo{background:#7a2f2f}
-    .Outros{background:#444c5b}
-
-    /* Print styling */
-    @media print {
-      body{background:#fff;color:#000}
-      .card{box-shadow:none;border:1px solid #ddd;page-break-inside:avoid}
-      .container{max-width:800px;margin:10px auto}
-      .chips,.toolbar{display:none}
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Plano de Treino 6 km - Nova Rotina</title>
+<style>
+    body { font-family: Arial, sans-serif; line-height: 1.5; margin: 20px; color: #333; }
+    h1 { text-align: center; color: #2a9d8f; }
+    h2 { color: #264653; margin-top: 30px; }
+    h3 { color: #264653; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #999; padding: 8px; vertical-align: top; }
+    th { background-color: #e0e0e0; }
+    .col-day { width: 25%; font-weight: bold; }
+    .tips { background-color: #f0f8ff; padding: 10px; margin-top: 20px; border-left: 4px solid #2a9d8f; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Guia de Protocolos e Medicações</h1>
-    <!-- <div class="muted">Versão simples para pacientes. Busque por nome, categoria ou objetivo. Clique em "Mostrar mais" para ver detalhes.</div> -->
 
-    <div class="toolbar">
-      <div class="search"><input id="q" type="search" placeholder="Buscar por nome, indicação ou categoria…"></div>
-      <button class="btn" id="btnPrint">Imprimir / Salvar PDF</button>
-      <button class="btn" id="btnClear">Limpar filtros</button>
-    </div>
+<h1>🏃‍♂️ Plano de Treino - Prova 6 km</h1>
+<p><strong>Objetivo:</strong> Concluir em 27 minutos (pace médio de 4:30 min/km)</p>
+<p><strong>Período:</strong> 13 a 26 de outubro de 2025</p>
+<p><strong>Treinos fixos:</strong> Terça, Quinta e Sábado</p>
+<p><strong>Descanso:</strong> Domingo</p>
+
+<h2>📅 Semana 1 (13/10 a 18/10)</h2>
+<table>
+    <tr>
+        <th class="col-day">Dia</th>
+        <th>Treino e Observações</th>
+    </tr>
+    <tr><td>Segunda (13/10)</td><td>Leve / regenerativo: alongamento, mobilidade ou caminhada 20–30 min</td></tr>
+    <tr><td>Terça (14/10)</td><td>Intervalado controlado – 5×600 m a 4:20–4:25/km<br>Aquecimento: 10 min + 3 acelerações<br>Recuperação: 90 s trote<br>5 min desaquecimento</td></tr>
+    <tr><td>Quarta (15/10)</td><td>Leve / regenerativo – 3–5 km a ritmo confortável ou treino de core</td></tr>
+    <tr><td>Quinta (16/10)</td><td>Ritmo de prova parcial – 1 km leve + 4 km a 4:35/km + 1 km leve</td></tr>
+    <tr><td>Sexta (17/10)</td><td>Leve / regenerativo – alongamento, mobilidade ou corrida leve 3–4 km</td></tr>
+    <tr><td>Sábado (18/10)</td><td>Rodagem longa – 7 km a 5:30–5:45/km<br>Último km: 5:00/km</td></tr>
+    <tr><td>Domingo (19/10)</td><td>Descanso total</td></tr>
+</table>
+
+<h2>📅 Semana 2 (20/10 a 26/10)</h2>
+<table>
+    <tr>
+        <th class="col-day">Dia</th>
+        <th>Treino e Observações</th>
+    </tr>
+    <tr><td>Segunda (20/10)</td><td>Leve / regenerativo – alongamento, mobilidade ou caminhada 20–30 min</td></tr>
+    <tr><td>Terça (21/10)</td><td>Intervalado leve – 4×400 m a 4:15/km<br>Aquecimento: 10 min leve<br>Recuperação: 90 s trote<br>5 min desaquecimento</td></tr>
+    <tr><td>Quarta (22/10)</td><td>Leve / regenerativo – 3–5 km a ritmo confortável ou treino de core</td></tr>
+    <tr><td>Quinta (23/10)</td><td>Ritmo de prova parcial / pré-prova – 3–4 km a 4:40–4:35/km, alongar após</td></tr>
+    <tr><td>Sexta (24/10)</td><td>Leve / regenerativo – corrida leve 3–4 km ou mobilidade</td></tr>
+    <tr><td>Sábado (25/10)</td><td>Rodagem curta / ativação – 3–4 km leves a 5:40–5:50/km</td></tr>
+    <tr><td>Domingo (26/10)</td><td>PROVA 6 KM 🏁 – Meta: 27 min<br>Aquecimento: 10 min + 2 tiros curtos<br>Estratégia: Km1–2 4:35/km, Km3–4 4:30/km, Km5–6 4:25/km</td></tr>
+</table>
+
+<div class="tips">
+<h3>💡 Dicas Gerais</h3>
+<ul>
+<li>5 min de trote leve + alongamento após todos os treinos.</li>
+<li>Sono de 7 h/dia para recuperação.</li>
+<li>Não testar alimentos/suplementos novos na prova.</li>
+<li>Treinar sempre no mesmo horário da corrida (5h da manhã).</li>
+<li>Após treino de força, priorizar hidratação e alimentação equilibrada.</li>
+</ul>
+</div>
 
-    <div class="chips" id="chips"></div>
-
-    <section class="grid" id="grid" aria-live="polite"></section>
-    <div id="empty" class="empty">Nenhum item encontrado. Ajuste a busca ou os filtros.</div>
-  </div>
-
-  <script>
-    const CATS = {
-      Recuperacao:"💪 Recuperação",
-      Figado:"🌿 Fígado/Detox",
-      Hormonal:"🧠 Hormônios/Neuro",
-      Imunidade:"🛡️ Imunidade/Antiox",
-      Estetica:"✨ Estética",
-      Vitaminas:"💊 Vitaminas/Minerais",
-      Metabolismo:"🔥 Metabolismo/Emagrec.",
-      Musculo:"⚡ Massa/Performance",
-      Outros:"📦 Outros"
-    };
-
-    const I = (nome, cat, oque, serve, quando, atencao) => ({nome, cat, oque, serve, quando, atencao});
-
-    const DATA = [
-      // Recuperação
-      I("Recovery Muscular","Recuperacao","Conjunto de nutrientes para ajudar o corpo a recuperar após treinos.",
-        "Reduz dor muscular e ajuda a reconstruir o músculo.",
-        "Após treinos intensos ou reabilitação de lesões.",
-        "Hidratação e descanso potencializam o efeito."),
-
-      I("Recovery Neuronal","Recuperacao","Suporte para cérebro e nervos.",
-        "Melhora foco, memória e reduz cansaço mental.",
-        "Quando há fadiga mental, necessidade de concentração prolongada.",
-        "Evitar uso à noite se provocar agitação."),
-
-      I("Recovery Vitaminas Hidrossolúveis","Vitaminas","Vitaminas do complexo B e vitamina C para reposição rápida.",
-        "Aumentam energia e suporte imunológico.",
-        "Carência nutricional, recuperação pós-doença ou esforço intenso.",
-        "Urina pode ficar amarela: é normal."),
-
-      I("Recovery – Oligoelementos/Metais","Vitaminas","Minerais como zinco, selênio, magnésio e cromo.",
-        "Ajudam metabolismo, imunidade e recuperação.",
-        "Dieta pobre ou perda de minerais por treino/estresse.",
-        "Tomar conforme orientação; alguns interagem com medicamentos."),
-
-      // Fígado/Detox
-      I("Protocolo de Desinflamação/Detox Hepática","Figado","Combinação para apoiar a função do fígado.",
-        "Ajuda a reduzir inflamação e processar toxinas.",
-        "Após uso excessivo de álcool, medicamentos ou exames alterados.",
-        "Não substitui dieta equilibrada e acompanhamento médico."),
-
-      I("Protocolo Esteatose Hepática (IM)","Figado","Tratamento de suporte para gordura no fígado.",
-        "Auxilia na redução da gordura hepática e melhora exames.",
-        "Quando há diagnóstico de esteatose hepática.",
-        "Exige mudanças de alimentação e acompanhamento regular."),
-
-      // Hormônios/Neuro
-      I("Alteração de Libido","Hormonal","Nutrientes que podem apoiar equilíbrio hormonal.",
-        "Melhora do desejo sexual e vitalidade.",
-        "Queda de libido relacionada a estresse, cansaço ou desequilíbrio.",
-        "Avaliar causas hormonais com profissional."),
-
-      I("Moduladores de Neurotransmissores","Hormonal","Suporte que ajuda a equilibrar neurotransmissores.",
-        "Melhora humor, ansiedade leve e qualidade do sono.",
-        "Em fases de estresse, ansiedade leve ou insônia leve.",
-        "Não substitui tratamento psiquiátrico quando necessário."),
-
-      // Imunidade/Antiox
-      I("Protocolo para Imunidade","Imunidade","Combinação de nutrientes para reforçar defesas.",
-        "Apoia resposta a infecções e melhora resistência.",
-        "Períodos de maior exposição (trabalho, viagens, mudança de estação).",
-        "Sono, alimentação e hidratação são essenciais."),
-
-      I("Antioxidante / Anti-Inflamatório","Imunidade","Nutrientes que reduzem o desgaste das células.",
-        "Ajudam a controlar inflamação e proteger órgãos.",
-        "Pessoas com inflamação crônica, estresse oxidativo ou treino intenso.",
-        "Uso contínuo costuma apresentar melhores resultados."),
-
-      // Estética
-      I("Envelhecimento Cutâneo e Prevenção da Flacidez","Estetica","Suporte com colágeno e antioxidantes.",
-        "Melhora firmeza, elasticidade e aspecto da pele.",
-        "Prevenção do envelhecimento e manutenção da pele.",
-        "Protetor solar e hidratação aumentam o benefício."),
-
-      I("Protocolo para Unhas e Cabelos (Pill Food)","Estetica","Vitaminas e aminoácidos para fios e unhas.",
-        "Fortalece unhas e reduz queda de cabelo leve.",
-        "Unhas fracas ou queda capilar sem causa médica grave.",
-        "Resultados aparecem em 8–12 semanas."),
-
-      I("D-Pantenol","Estetica","Pró-vitamina B5, boa para pele e cabelos.",
-        "Hidrata, ajuda na recuperação e brilho dos fios.",
-        "Ressecamento, danos por procedimentos ou após sol.",
-        "Pode ser usado topicamente ou em formulações orais conforme orientação."),
-
-      I("L-Lisina","Musculo","Aminoácido essencial que participa da formação do colágeno.",
-        "Ajuda na cicatrização, saúde da pele e suporte imunológico.",
-        "Auxílio em recuperação tecidual e manutenção de pele e cabelos.",
-        "Geralmente bem tolerada; seguir dose recomendada."),
-
-      // Vitaminas / Minerais (completa)
-      I("Vitamina D3 100000UI","Vitaminas","Vitamina do sol, importante para ossos e imunidade.",
-        "Ajuda a absorver cálcio e fortalece o sistema de defesa.",
-        "Quando há deficiência ou necessidade de reforço.","Dose alta: precisa de acompanhamento para evitar excesso."),
-
-      I("Vitamina D3 600000UI","Vitaminas","Dose muito alta de vitamina D para reposição rápida.",
-        "Usada em casos de deficiência importante.","Somente quando indicado por médico; monitorar níveis.","Uso sob supervisão médica."),
-
-      I("Vitamina A (Palmitato de Retinol) 25000UI","Vitaminas","Vitamina importante para visão, pele e mucosas.",
-        "Ajuda visão noturna e saúde da pele.","Deficiência ou indicação dermatológica.","Excesso pode ser tóxico; usar com cuidado."),
-
-      I("Vitamina E (Alfa Tocoferol) 200UI","Vitaminas","Antioxidante que protege as células.",
-        "Apoia saúde da pele e circulação.","Déficit ou necessidade de suporte antioxidante.","Seguir orientação; evitar doses muito altas."),
-
-      I("Vitamina B12 (Cianocobalamina) 2500mcg","Vitaminas","Vitamina essencial para sangue e nervos.",
-        "Ajuda na energia e na formação de células do sangue.","Anemia por deficiência, vegetarianos, idosos.","Pode ser administrada por via injetável quando necessário."),
-
-      I("Vitamina C (Ácido Ascórbico) 5g","Vitaminas","Vitamina que fortalece a defesa do corpo.",
-        "Apoia imunidade e produção de colágeno.","Períodos de doença, cicatrização ou maior necessidade.","Doses altas podem causar desconforto intestinal."),
-
-      I("Vitamina B3 (Niacinamida) 30mg","Vitaminas","Vitamina que participa do metabolismo de energia.",
-        "Auxilia pele e produção de energia nas células.","Indicações dermatológicas e de suporte metabólico.","Niacinamida tem menos efeito de rubor que niacina."),
-
-      I("Complexo B","Vitaminas","Conjunto de vitaminas do complexo B.",
-        "Melhora energia, humor e saúde do sistema nervoso.","Estresse, cansaço e dietas restritivas.","Urina pode ficar amarela; é normal."),
-
-      I("ADEK","Vitaminas","Combinação de vitaminas A, D, E e K (lipossolúveis).",
-        "Apoio à pele, ossos, coagulação e imunidade.","Reposição conjunta quando indicada.","Tomar com alguma gordura na refeição para melhor absorção."),
-
-      I("Ácido Fólico","Vitaminas","Vitamina B9 importante para formação do sangue e do bebê.",
-        "Previne anemia e malformações em gestação.","Gestantes ou mulheres planejando gravidez.","Não substituir orientações médicas; pode mascarar deficiência de B12."),
-
-      I("Metilfolato","Vitaminas","Forma ativa do ácido fólico, de fácil uso pelo corpo.",
-        "Indicado para quem tem dificuldade em metabolizar ácido fólico comum.","Quando há necessidade de forma ativa; orientação médica.","Usar conforme recomendação."),
-
-      I("PQQ 2,5mg","Vitaminas","Nutriente ligado à saúde das mitocôndrias (energia celular).",
-        "Pode melhorar disposição e função celular.","Fadiga persistente; combinável com CoQ10.","Ainda em estudos; seguir orientação."),
-
-      I("Cloreto de Magnésio","Vitaminas","Mineral que ajuda no relaxamento muscular e sono.",
-        "Auxilia câimbras, tensão muscular e relaxamento.","Câimbras, sono ruim ou necessidade de reposição.","Pode causar efeito laxante se em excesso."),
-
-      I("Cloreto de Cromo 100mcg","Vitaminas","Mineral que ajuda no controle do açúcar no sangue.",
-        "Auxilia controle de apetite por doces e glicemia.","Desequilíbrios glicêmicos e compulsão por doces.","Acompanhamento com exames é recomendado."),
-
-      I("Coenzima Q10 100mg","Vitaminas","Substância que dá energia às células e age como antioxidante.",
-        "Ajuda disposição e saúde do coração.","Cansaço, uso de estatinas e envelhecimento.","Geralmente bem tolerada."),
-
-      I("Ácido Lipóico 600mg","Vitaminas","Antioxidante que também ajuda na sensibilidade à insulina.",
-        "Auxilia controle de glicemia e saúde dos nervos.","Resistência à insulina ou neuropatia.","Tomar com orientação; pode causar leve desconforto gástrico."),
-
-      // Metabolismo / Emagrecimento
-      I("Emagrecimento – Dieta Cetogênica (Doces e Ansiedade)","Metabolismo","Plano alimentar com baixo carboidrato.",
-        "Reduz fome por doces e pode acelerar perda de peso.","Quando indicado por profissional para perda de peso.","Acompanhamento nutricional é essencial."),
-
-      I("Emagrecimento Acelerador de Metabolismo II","Metabolismo","Fórmula que ajuda a aumentar o gasto energético.",
-        "Auxilia queima calórica e clareamento do platô de emagrecimento.","Emagrecimento com estagnação.","Pode conter estimulantes; cuidado se sensível a cafeína."),
-
-      I("Tri Slim","Metabolismo","Suporte para controle do apetite e metabolismo.",
-        "Ajuda na adesão a dieta e redução de ingestão calórica.","Fase de emagrecimento com necessidade de suporte.","Melhor com dieta e exercício."),
-
-      I("Compulsi Free","Metabolismo","Ajuda a controlar episódios de comer por ansiedade.",
-        "Reduz compulsão e ataques de fome emocional.","Compulsão alimentar ou comer por estresse.","Combinar com técnicas de manejo do estresse."),
-
-      I("Insulin Suport 5mL","Metabolismo","Nutrientes que auxiliam a sensibilidade à insulina.",
-        "Apoia controle glicêmico e composição corporal.","Resistência insulínica e metabolismo alterado.","Acompanhamento com exames é recomendado."),
-
-      I("Semaglutida","Metabolismo","Medicamento que ajuda a reduzir apetite e controlar glicose.",
-        "Apoia perda de peso e controle de glicemia em DM2.","Obesidade e diabetes tipo 2 conforme indicação médica.","Uso somente com prescrição e acompanhamento."),
-
-      I("Tirzepatida","Metabolismo","Medicamento que age em hormônios do apetite.",
-        "Promove perda de peso e melhora glicemia.","Quando indicado por endocrinologista.","Uso sob supervisão médica."),
-
-      // Massa / Performance
-      I("Aumento de Massa Muscular I","Musculo","Protocolos para favorecer ganho de massa muscular.",
-        "Melhora recuperação e hipertrofia quando aliado ao treino.","Treino de força e alimentação adequada.","Resultados dependem de consistência no treino e na dieta."),
-
-      I("BCAA 4mL","Musculo","Aminoácidos que ajudam recuperação muscular.",
-        "Reduz fadiga e auxilia na síntese protéica após treino.","Treinos longos ou intensos; recuperação.","Melhor em conjunto com ingestão proteica."),
-
-      I("Booster Energético","Musculo","Fórmula para aumentar energia imediata.",
-        "Melhora disposição para treinos ou dias cansativos.","Antes de treinos ou em dias de baixa energia.","Evitar à noite se afetar sono."),
-
-      I("Noripurum","Vitaminas","Suplemento de ferro para repor estoques.",
-        "Trata anemia por deficiência de ferro.","Fadiga, palidez, queda de cabelo por anemia.","Pode causar desconforto gástrico e fezes escuras."),
-
-      // Estética / Circulação
-      I("Lipo Grape","Estetica","Extratos e antioxidantes para circulação e retenção.",
-        "Ajuda reduzir inchaço e melhorar aspecto da pele.","Sensação de pernas cansadas e retenção.","Hidratação e atividade física potencializam efeitos."),
-
-      I("Lipedema","Estetica","Apoio para pessoas com diagnóstico de lipedema.",
-        "Auxilia no controle da inflamação e desconforto.","Quando há lipedema confirmado.","Parte de um plano multiprofissional."),
-
-      // Antiinflamatório natural
-      I("Curcumina","Imunidade","Ingrediente natural com ação anti-inflamatória.",
-        "Ajuda reduzir inflamação e dor leve.","Inflamação crônica e suporte articular.","Melhor absorção em formulações específicas."),
-
-      // Outros específicos
-      I("ADEK","Vitaminas","Suplemento com vitaminas A, D, E e K juntas.",
-        "Reposição de vitaminas lipossolúveis.","Quando indicado por avaliação.","Tomar com gordura na refeição."),
-
-      I("Metilfolato","Vitaminas","Forma ativa do folato (B9).",
-        "Auxilia na saúde celular e na gravidez quando indicado.","Alternativa para quem não processa ácido fólico.","Usar com orientação."),
-
-      I("Ácido Fólico","Vitaminas","Vitamina essencial para formação do bebê e sangue.",
-        "Previne malformações e anemia.","Gestantes e quem planeja engravidar.","Seguir orientação médica."),
-
-      I("PQQ 2,5mg","Vitaminas","Suporte mitocondrial para energia celular.",
-        "Melhora disposição em alguns casos.","Fadiga e suporte energético.","Combinar com outras estratégias de saúde."),
-
-      I("Cloreto de Magnésio","Vitaminas","Mineral para relaxamento muscular e sono.",
-        "Ajuda contra câimbras e melhora do sono.","Uso em câimbras e tensão muscular.","Pode ter efeito laxante em excesso."),
-
-      I("D-Pantenol","Estetica","Pró-vitamina B5 para pele e cabelo.",
-        "Hidrata e auxilia recuperação da pele.","Ressecamento e recuperação pós-procedimento.","Uso tópico ou sistêmico conforme indicação."),
-
-      I("Compulsi Free","Metabolismo","Ajuda no controle de episódios de compulsão alimentar.",
-        "Reduz vontade de comer por ansiedade.","Compulsão alimentar e episódios noturnos.","Associar com acompanhamento psicológico traz melhores resultados."),
-
-      I("Imuni Plus","Imunidade","Suporte composto para reforçar defesas naturais.",
-        "Ajuda prevenção de gripes e resfriados.","Períodos de maior exposição.","Não substitui hábitos saudáveis."),
-
-      I("L-Lisina","Musculo","Aminoácido essencial que contribui para formação de colágeno.",
-        "Auxilia cicatrização e saúde dos tecidos.","Suporte em recuperação e manutenção da pele.","Normalmente bem tolerada.")
-    ];
-
-    // render helpers
-    const chipsWrap = document.getElementById('chips');
-    Object.entries(CATS).forEach(([k,v])=>{
-      const el = document.createElement('span');
-      el.className = 'chip';
-      el.textContent = v;
-      el.dataset.key = k;
-      el.onclick = ()=>{ el.classList.toggle('active'); render(); };
-      chipsWrap.appendChild(el);
-    });
-
-    const q = document.getElementById('q');
-    const grid = document.getElementById('grid');
-    const empty = document.getElementById('empty');
-
-    function card(item){
-      const tag = CATS[item.cat];
-      return `<article class="card ${item.cat}">
-        <h3>${tag} ${item.nome}</h3>
-        <p class="pill"><b>O que é:</b> ${item.oque}</p>
-        <p class="pill"><b>Para que serve:</b> ${item.serve}</p>
-        <details class="more">
-          <summary>Mostrar mais</summary>
-          <p class="sec"><b>Quando usar:</b> ${item.quando}</p>
-          <p class="sec"><b>Atenção:</b> ${item.atencao}</p>
-        </details>
-      </article>`;
-    }
-
-    function activeCats(){ return [...chipsWrap.querySelectorAll('.chip.active')].map(c=>c.dataset.key); }
-
-    function render(){
-      const text = (q.value||'').toLowerCase().trim();
-      const cats = new Set(activeCats());
-      const filtered = DATA.filter(it=>{
-        const content = `${it.nome} ${it.oque} ${it.serve} ${it.quando} ${it.atencao} ${CATS[it.cat]}`.toLowerCase();
-        const textOk = !text || content.includes(text);
-        const catOk = cats.size===0 || cats.has(it.cat);
-        return textOk && catOk;
-      });
-      grid.innerHTML = filtered.map(card).join('');
-      empty.style.display = filtered.length? 'none':'block';
-    }
-
-    q.addEventListener('input', render);
-    document.getElementById('btnClear').onclick = ()=>{ q.value=''; chipsWrap.querySelectorAll('.chip.active').forEach(c=>c.classList.remove('active')); render(); };
-    document.getElementById('btnPrint').onclick = ()=> window.print();
-
-    render();
-  </script>
 </body>
 </html>
