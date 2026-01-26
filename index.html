@@ -1,68 +1,353 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Plano de Treino 6 km - Nova Rotina</title>
-<style>
-    body { font-family: Arial, sans-serif; line-height: 1.5; margin: 20px; color: #333; }
-    h1 { text-align: center; color: #2a9d8f; }
-    h2 { color: #264653; margin-top: 30px; }
-    h3 { color: #264653; margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-    th, td { border: 1px solid #999; padding: 8px; vertical-align: top; }
-    th { background-color: #e0e0e0; }
-    .col-day { width: 25%; font-weight: bold; }
-    .tips { background-color: #f0f8ff; padding: 10px; margin-top: 20px; border-left: 4px solid #2a9d8f; }
-</style>
+    <meta charset="UTF-8">
+    <title>Ficha de Adesão</title>
+
+    <!-- Fonte moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1f2933;
+            --secondary: #8b6f47;
+            --bg: #f5f7f9;
+            --card: #ffffff;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: var(--card);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(139,111,71,0.15);
+        }
+
+        .valor {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .declaracao {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .rodape {
+            margin-top: 60px;
+        }
+
+        .assinaturas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .assinatura {
+            text-align: center;
+        }
+
+        .linha {
+            border-top: 1px solid #999;
+            margin-bottom: 8px;
+        }
+
+        .assinatura span {
+            font-size: 13px;
+            color: #555;
+        }
+		
+		.pagamentos {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 16px;
+		}
+
+		.opcao-pagamento {
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 14px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			cursor: pointer;
+			transition: 0.2s;
+		}
+
+		.opcao-pagamento input {
+			accent-color: var(--secondary);
+		}
+
+		.opcao-pagamento:hover {
+			border-color: var(--secondary);
+		}
+
+		.parcelas {
+			margin-top: 20px;
+			max-width: 200px;
+			display: none;
+		}
+
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<h1>🏃‍♂️ Plano de Treino - Prova 6 km</h1>
-<p><strong>Objetivo:</strong> Concluir em 27 minutos (pace médio de 4:30 min/km)</p>
-<p><strong>Período:</strong> 13 a 26 de outubro de 2025</p>
-<p><strong>Treinos fixos:</strong> Terça, Quinta e Sábado</p>
-<p><strong>Descanso:</strong> Domingo</p>
+<div class="container">
 
-<h2>📅 Semana 1 (13/10 a 18/10)</h2>
-<table>
-    <tr>
-        <th class="col-day">Dia</th>
-        <th>Treino e Observações</th>
-    </tr>
-    <tr><td>Segunda (13/10)</td><td>Leve / regenerativo: alongamento, mobilidade ou caminhada 20–30 min</td></tr>
-    <tr><td>Terça (14/10)</td><td>Intervalado controlado – 5×600 m a 4:20–4:25/km<br>Aquecimento: 10 min + 3 acelerações<br>Recuperação: 90 s trote<br>5 min desaquecimento</td></tr>
-    <tr><td>Quarta (15/10)</td><td>Leve / regenerativo – 3–5 km a ritmo confortável ou treino de core</td></tr>
-    <tr><td>Quinta (16/10)</td><td>Ritmo de prova parcial – 1 km leve + 4 km a 4:35/km + 1 km leve</td></tr>
-    <tr><td>Sexta (17/10)</td><td>Leve / regenerativo – alongamento, mobilidade ou corrida leve 3–4 km</td></tr>
-    <tr><td>Sábado (18/10)</td><td>Rodagem longa – 7 km a 5:30–5:45/km<br>Último km: 5:00/km</td></tr>
-    <tr><td>Domingo (19/10)</td><td>Descanso total</td></tr>
-</table>
+    <h1>Ficha de Adesão ao Protocolo</h1>
 
-<h2>📅 Semana 2 (20/10 a 26/10)</h2>
-<table>
-    <tr>
-        <th class="col-day">Dia</th>
-        <th>Treino e Observações</th>
-    </tr>
-    <tr><td>Segunda (20/10)</td><td>Leve / regenerativo – alongamento, mobilidade ou caminhada 20–30 min</td></tr>
-    <tr><td>Terça (21/10)</td><td>Intervalado leve – 4×400 m a 4:15/km<br>Aquecimento: 10 min leve<br>Recuperação: 90 s trote<br>5 min desaquecimento</td></tr>
-    <tr><td>Quarta (22/10)</td><td>Leve / regenerativo – 3–5 km a ritmo confortável ou treino de core</td></tr>
-    <tr><td>Quinta (23/10)</td><td>Ritmo de prova parcial / pré-prova – 3–4 km a 4:40–4:35/km, alongar após</td></tr>
-    <tr><td>Sexta (24/10)</td><td>Leve / regenerativo – corrida leve 3–4 km ou mobilidade</td></tr>
-    <tr><td>Sábado (25/10)</td><td>Rodagem curta / ativação – 3–4 km leves a 5:40–5:50/km</td></tr>
-    <tr><td>Domingo (26/10)</td><td>PROVA 6 KM 🏁 – Meta: 27 min<br>Aquecimento: 10 min + 2 tiros curtos<br>Estratégia: Km1–2 4:35/km, Km3–4 4:30/km, Km5–6 4:25/km</td></tr>
-</table>
+    <!-- PACIENTE -->
+    <div class="section">
+        <div class="section-title">Paciente</div>
 
-<div class="tips">
-<h3>💡 Dicas Gerais</h3>
-<ul>
-<li>5 min de trote leve + alongamento após todos os treinos.</li>
-<li>Sono de 7 h/dia para recuperação.</li>
-<li>Não testar alimentos/suplementos novos na prova.</li>
-<li>Treinar sempre no mesmo horário da corrida (5h da manhã).</li>
-<li>Após treino de força, priorizar hidratação e alimentação equilibrada.</li>
-</ul>
+        <div class="grid">
+            <div>
+                <label>Nome</label>
+                <input type="text" id="nomePaciente">
+            </div>
+
+            <div>
+                <label>CPF</label>
+                <input type="text" id="cpf" maxlength="14">
+            </div>
+
+            <div>
+                <label>Telefone</label>
+                <input type="text" id="telefone" maxlength="15">
+            </div>
+        </div>
+    </div>
+
+    <!-- CLÍNICA -->
+    <div class="section">
+        <div class="section-title">Clínica</div>
+
+        <label>Nome da clínica</label>
+        <input type="text" id="nomeClinica" value="VITARE">
+    </div>
+
+    <!-- PROTOCOLO -->
+    <div class="section">
+        <div class="section-title">Protocolo</div>
+
+        <div class="grid">
+            <div>
+                <label>Nome do protocolo</label>
+                <select id="protocolo" onchange="atualizarValor()">
+                    <option value="">Selecione</option>
+                    <option value="1500">Emagrecimento Premium</option>
+                    <option value="1800">Estético Avançado</option>
+                    <option value="2200">Terapêutico Integrativo</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Sessões</label>
+                <select>
+                    <script>
+                        for (let i = 1; i <= 30; i++) {
+                            document.write(`<option>${i}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+
+            <div>
+                <label>Frequência</label>
+                <select>
+                    <option>1x por semana</option>
+                    <option>2x por semana</option>
+                    <option>3x por semana</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVESTIMENTO -->
+    <div class="section">
+        <div class="section-title">Investimento</div>
+
+        <label>Valor total (R$)</label>
+        <input type="number" id="valorTotal" class="valor" step="0.01">
+    </div>
+	
+	<!-- FORMA DE PAGAMENTO -->
+	<div class="section">
+		<div class="section-title">Forma de Pagamento</div>
+
+		<div class="grid">
+			<div>
+				<label>Forma de pagamento</label>
+				<select id="formaPagamento">
+					<option value="">Selecione</option>
+					<option value="Dinheiro">Dinheiro</option>
+					<option value="Pix">Pix</option>
+					<option value="Débito">Débito</option>
+					<option value="Crédito">Crédito</option>
+				</select>
+			</div>
+
+			<div id="campoParcelas" style="display:none;">
+				<label>Parcelas</label>
+				<select>
+					<script>
+						for (let i = 1; i <= 12; i++) {
+							document.write(`<option>${i}x</option>`);
+						}
+					</script>
+				</select>
+			</div>
+		</div>
+	</div>
+
+
+
+    <!-- DECLARAÇÃO -->
+    <div class="section">
+        <div class="section-title">Declaração</div>
+
+        <div class="declaracao">
+            Declaro estar ciente de que o protocolo é personalizado, que os resultados podem variar,
+            que não há garantia de resultados específicos, que seguirei as orientações da equipe
+            profissional e que faltas sem aviso prévio poderão ser consideradas sessão realizada.
+        </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <div class="rodape">
+        <label>Local e data</label>
+        <input type="text">
+
+        <div class="assinaturas">
+            <div class="assinatura">
+                <div class="linha"></div>
+                <span id="assinaturaPaciente">Paciente</span>
+            </div>
+
+            <div class="assinatura">
+                <div class="linha"></div>
+                <span id="assinaturaClinica">VITARE</span>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    cpf.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '');
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        e.target.value = v;
+    });
+
+    telefone.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '');
+        v = v.replace(/^(\d{2})(\d)/, '($1) $2');
+        v = v.replace(/(\d{5})(\d)/, '$1-$2');
+        e.target.value = v;
+    });
+
+    function atualizarValor() {
+        valorTotal.value = protocolo.value;
+    }
+
+    nomePaciente.addEventListener('input', () => {
+        assinaturaPaciente.textContent = nomePaciente.value || 'Paciente';
+    });
+
+    nomeClinica.addEventListener('input', () => {
+        assinaturaClinica.textContent = nomeClinica.value || 'VITARE';
+    });
+	
+    const formaPagamento = document.getElementById('formaPagamento');
+    const campoParcelas = document.getElementById('campoParcelas');
+
+    formaPagamento.addEventListener('change', () => {
+        campoParcelas.style.display =
+            formaPagamento.value === 'Crédito' ? 'block' : 'none';
+    });
+</script>
 
 </body>
 </html>
