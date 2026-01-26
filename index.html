@@ -67,6 +67,12 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
+		
+		.grid-pagamento {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+			gap: 20px;
+		}
 
         label {
             font-size: 13px;
@@ -158,6 +164,26 @@
 			max-width: 200px;
 			display: none;
 		}
+		
+		.mt-20 { margin-top: 20px; }
+		.mt-30 { margin-top: 30px; }
+		.mb-30 { margin-bottom: 30px !important; }
+		
+		.select-pequeno {
+			max-width: 250px;
+		}
+		
+		.select-parcelas {
+			max-width: 100px;
+		}
+		
+		.declaracao {
+			border-left: 4px solid var(--secondary);
+		}
+		
+		.assinatura span {
+			letter-spacing: 0.5px;
+		}
 
 
         @media print {
@@ -193,7 +219,7 @@
 					<label>Nome</label>
 					<input type="text" id="nomePaciente">
 				</div>
-				</br>
+				<div class="mt-20"></div>
 				<div class="grid">
 				<div>
 					<label>CPF</label>
@@ -218,7 +244,7 @@
                     <option value="2200">Terapêutico Integrativo</option>
                 </select>
             </div>
-			</br>
+			<div class="mt-20"></div>
 			<div class="grid">
 				<div>
 					<label>Sessões</label>
@@ -228,7 +254,7 @@
 								document.write(`<option>${i}</option>`);
 							}
 						</script>
-					</select>
+					</select>										
 				</div>
 
 				<div>
@@ -254,10 +280,11 @@
 	<div class="section">
 		<div class="section-title">Forma de Pagamento</div>
 
-		<div class="grid">
+		<div class="grid-pagamento">
 			<div>
-				<label>Forma de pagamento</label>
-				<select id="formaPagamento">
+				<label>Opção</label>
+				<!-- <select id="formaPagamento"> -->
+				<select id="formaPagamento" class="select-pequeno">
 					<option value="">Selecione</option>
 					<option value="Dinheiro">Dinheiro</option>
 					<option value="Pix">Pix</option>
@@ -268,7 +295,7 @@
 
 			<div id="campoParcelas" style="display:none;">
 				<label>Parcelas</label>
-				<select>
+				<select class="select-parcelas">
 					<script>
 						for (let i = 1; i <= 12; i++) {
 							document.write(`<option>${i}x</option>`);
@@ -294,9 +321,11 @@
 
     <!-- RODAPÉ -->
     <div class="rodape">
-        <label>Saquarema-RJ, _______  de  ____________________  de 20_____</label>
-        <!-- <input type="text"> -->
-		</br></br>
+        <div>
+			<label>Saquarema-RJ, _______  de  ____________________  de 20_____</label>
+		</div>
+		</br>
+		</br>        
         <div class="assinaturas">
             <div class="assinatura">
                 <div class="linha"></div>
