@@ -5,7 +5,7 @@
     <title>Ficha de Adesão</title>
 
     <!-- Fonte moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">		
 
     <style>
         :root {
@@ -57,6 +57,10 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+		
+		.txt-center{
+			text-align: center;
+		}
 
         .grid {
             display: grid;
@@ -173,43 +177,38 @@
 
 <div class="container">
 
-    <h1>Ficha de Adesão ao Protocolo</h1>
+    <h1>Ficha de Adesão ao Protocolo</h1>	
+	
+	<!-- CLÍNICA -->
+    <div class="section">
+        <div class="section-title txt-center">Clínica Vitare</div>
+         <!-- <label>Nome da clínica</label>  -->
+         <!-- <input type="text" id="nomeClinica" value="VITARE">  -->
+    </div> 
 
     <!-- PACIENTE -->
     <div class="section">
-        <div class="section-title">Paciente</div>
-
-        <div class="grid">
-            <div>
-                <label>Nome</label>
-                <input type="text" id="nomePaciente">
-            </div>
-
-            <div>
-                <label>CPF</label>
-                <input type="text" id="cpf" maxlength="14">
-            </div>
-
-            <div>
-                <label>Telefone</label>
-                <input type="text" id="telefone" maxlength="15">
-            </div>
-        </div>
-    </div>
-
-    <!-- CLÍNICA -->
-    <div class="section">
-        <div class="section-title">Clínica</div>
-
-        <label>Nome da clínica</label>
-        <input type="text" id="nomeClinica" value="VITARE">
+        <div class="section-title">Paciente</div>        					
+				<div>
+					<label>Nome</label>
+					<input type="text" id="nomePaciente">
+				</div>
+				</br>
+				<div class="grid">
+				<div>
+					<label>CPF</label>
+					<input type="text" id="cpf" maxlength="14">
+				</div>
+				<div>
+					<label>Telefone</label>
+					<input type="text" id="telefone" maxlength="15">
+				</div>
+			</div>
     </div>
 
     <!-- PROTOCOLO -->
     <div class="section">
         <div class="section-title">Protocolo</div>
-
-        <div class="grid">
             <div>
                 <label>Nome do protocolo</label>
                 <select id="protocolo" onchange="atualizarValor()">
@@ -219,27 +218,28 @@
                     <option value="2200">Terapêutico Integrativo</option>
                 </select>
             </div>
+			</br>
+			<div class="grid">
+				<div>
+					<label>Sessões</label>
+					<select>
+						<script>
+							for (let i = 1; i <= 30; i++) {
+								document.write(`<option>${i}</option>`);
+							}
+						</script>
+					</select>
+				</div>
 
-            <div>
-                <label>Sessões</label>
-                <select>
-                    <script>
-                        for (let i = 1; i <= 30; i++) {
-                            document.write(`<option>${i}</option>`);
-                        }
-                    </script>
-                </select>
-            </div>
-
-            <div>
-                <label>Frequência</label>
-                <select>
-                    <option>1x por semana</option>
-                    <option>2x por semana</option>
-                    <option>3x por semana</option>
-                </select>
-            </div>
-        </div>
+				<div>
+					<label>Frequência</label>
+					<select>
+						<option>1x por semana</option>
+						<option>2x por semana</option>
+						<option>3x por semana</option>
+					</select>
+				</div>
+			</div>
     </div>
 
     <!-- INVESTIMENTO -->
@@ -294,9 +294,9 @@
 
     <!-- RODAPÉ -->
     <div class="rodape">
-        <label>Local e data</label>
-        <input type="text">
-
+        <label>Saquarema-RJ, _______  de  ____________________  de 20_____</label>
+        <!-- <input type="text"> -->
+		</br></br>
         <div class="assinaturas">
             <div class="assinatura">
                 <div class="linha"></div>
@@ -336,9 +336,9 @@
         assinaturaPaciente.textContent = nomePaciente.value || 'Paciente';
     });
 
-    nomeClinica.addEventListener('input', () => {
-        assinaturaClinica.textContent = nomeClinica.value || 'VITARE';
-    });
+    <!-- nomeClinica.addEventListener('input', () => { -->
+        <!-- assinaturaClinica.textContent = nomeClinica.value || 'VITARE'; -->
+    <!-- }); -->
 	
     const formaPagamento = document.getElementById('formaPagamento');
     const campoParcelas = document.getElementById('campoParcelas');
