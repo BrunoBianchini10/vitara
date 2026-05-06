@@ -316,6 +316,19 @@
             max-height: 80px;
             object-fit: contain;
         }
+		.data-local {
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		#dataInput {
+			padding: 6px 10px;
+			border-radius: 8px;
+			border: 1px solid var(--border);
+			font-family: 'Inter', sans-serif;
+			margin-left: 15px; 
+			width:150px
+		}
 
         /* ── Print ── */
         @page { size: A4; margin: 15mm; }
@@ -340,6 +353,8 @@
             .btn-assinar, .btn-limpar, .canvas-hint,
             #canvasAssinatura, #canvasClinica { display: none !important; }
             #previewAssinatura, #previewClinica { display: block !important; max-height: 70px; }
+			
+			#dataInput { display: none !important; }
         }
     </style>
 </head>
@@ -348,7 +363,8 @@
 <div class="container">
 
     <div class="logo">
-        <img src="logotipo-lm.png" alt="Clínica Vitara">
+        <!-- <img src="logotipo-lm.png" alt="Clínica Vitara"> -->
+		<img src="logotipo-vitara.png" alt="Clínica Vitara">
     </div>
 
     <h1>Ficha de Adesão ao Protocolo</h1>	
@@ -454,7 +470,15 @@
     <!-- RODAPÉ -->
     <div class="rodape">
         <div>
-            <label>Saquarema-RJ, _______  de  ____________________  de 20_____.</label>
+            <!-- <label>Saquarema-RJ, _______  de  ____________________  de 20_____.</label> -->
+			<div class="data-local">
+				Saquarema-RJ, 
+				<span id="dia"></span> de 
+				<span id="mes"></span> de 
+				<span id="ano"></span>
+				
+				<input type="date" id="dataInput">
+			</div>
         </div>
         <br><br>        
         <div class="assinaturas">
@@ -691,6 +715,32 @@
     modal.addEventListener('click', e => {
         if (e.target === modal) fecharModal();
     });
+	
+	const meses = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+	];
+
+	const inputData = document.getElementById("dataInput");
+
+	function formatarData(data) {
+		const [ano, mes, dia] = data.split("-");
+		const d = new Date(ano, mes - 1, dia);
+
+		document.getElementById("dia").textContent = String(d.getDate()).padStart(2, '0');
+		document.getElementById("mes").textContent = meses[d.getMonth()];
+		document.getElementById("ano").textContent = d.getFullYear();
+	}
+
+	// 📅 Preenche com data atual ao carregar
+	const hoje = new Date().toISOString().split("T")[0];
+	inputData.value = hoje;
+	formatarData(hoje);
+
+	// 📅 Atualiza quando usuário mudar
+	inputData.addEventListener("change", (e) => {
+		formatarData(e.target.value);
+	});
 </script>
 
 </body>
