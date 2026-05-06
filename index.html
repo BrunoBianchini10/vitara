@@ -153,7 +153,7 @@
             width: 100%;
         }
 
-        #canvasAssinatura {
+        .canvas-assinatura {
             border: 1.5px dashed #aaa;
             border-radius: 10px;
             background: #fafafa;
@@ -163,7 +163,7 @@
             touch-action: none;
         }
 
-        #canvasAssinatura.assinado {
+        .canvas-assinatura.assinado {
             border-style: solid;
             border-color: var(--secondary);
             background: #fff;
@@ -306,7 +306,7 @@
         .btn-limpar-modal:hover { color: #555; border-color: #aaa; }
 
         /* Miniatura da assinatura salva */
-        #previewAssinatura {
+        #previewAssinatura, #previewClinica {
             display: none;
             border: 1px solid var(--border);
             border-radius: 10px;
@@ -336,9 +336,10 @@
             .assinaturas { margin-top: 30px; page-break-inside: avoid; }
             .linha { margin-bottom: 6px; }
 
-            /* Esconde controles e mostra apenas a imagem da assinatura */
-            .btn-assinar, .btn-limpar, .canvas-hint, #canvasAssinatura { display: none !important; }
-            #previewAssinatura { display: block !important; max-height: 70px; }
+            /* Esconde controles e mostra apenas as imagens de assinatura */
+            .btn-assinar, .btn-limpar, .canvas-hint,
+            #canvasAssinatura, #canvasClinica { display: none !important; }
+            #previewAssinatura, #previewClinica { display: block !important; max-height: 70px; }
         }
     </style>
 </head>
@@ -458,25 +459,29 @@
         <br><br>        
         <div class="assinaturas">
 
-            <!-- Assinatura do Paciente com canvas -->
+            <!-- Assinatura do Paciente -->
             <div class="assinatura assinatura-digital-wrapper">
-                <!-- Mostrado na tela -->
-                <canvas id="canvasAssinatura" height="80"></canvas>
-                <!-- Mostrado na impressão -->
+                <canvas id="canvasAssinatura" class="canvas-assinatura" height="80"></canvas>
                 <img id="previewAssinatura" alt="Assinatura do paciente">
-
                 <div class="canvas-hint" id="hintAssinatura">Toque ou clique aqui para assinar</div>
                 <div>
-                    <button class="btn-assinar" onclick="abrirModal()">✍ Assinar</button>
-                    <button class="btn-limpar" onclick="limparAssinatura()" id="btnLimpar" style="display:none;">Limpar</button>
+                    <button class="btn-assinar" onclick="abrirModal('paciente')">✍ Assinar</button>
+                    <button class="btn-limpar" onclick="limparAssinatura('paciente')" id="btnLimparPaciente" style="display:none;">Limpar</button>
                 </div>
                 <br>
                 <span id="assinaturaPaciente">Paciente</span>
             </div>
 
-            <!-- Assinatura da clínica (linha tradicional) -->
-            <div class="assinatura">
-                <div class="linha"></div>
+            <!-- Assinatura da Clínica -->
+            <div class="assinatura assinatura-digital-wrapper">
+                <canvas id="canvasClinica" class="canvas-assinatura" height="80"></canvas>
+                <img id="previewClinica" alt="Assinatura da clínica">
+                <div class="canvas-hint" id="hintClinica">Toque ou clique aqui para assinar</div>
+                <div>
+                    <button class="btn-assinar" onclick="abrirModal('clinica')">✍ Assinar</button>
+                    <button class="btn-limpar" onclick="limparAssinatura('clinica')" id="btnLimparClinica" style="display:none;">Limpar</button>
+                </div>
+                <br>
                 <span id="assinaturaClinica">VITARA</span>
             </div>
         </div>
@@ -544,19 +549,36 @@
         campoParcelas.style.display = formaPagamento.value === 'Crédito' ? 'block' : 'none';
     });
 
-    /* ── Assinatura Digital ── */
+    /* ── Assinatura Digital (paciente + clínica) ── */
     const modal = document.getElementById('modalAssinatura');
     const canvasModal = document.getElementById('canvasModal');
     const ctxModal = canvasModal.getContext('2d');
-    const canvasPreview = document.getElementById('canvasAssinatura');
-    const ctxPreview = canvasPreview.getContext('2d');
-    const imgPreview = document.getElementById('previewAssinatura');
-    const hint = document.getElementById('hintAssinatura');
-    const btnLimpar = document.getElementById('btnLimpar');
 
+    let assinanteAtivo = null; // 'paciente' ou 'clinica'
     let desenhando = false;
     let ultimoX = 0, ultimoY = 0;
-    let assinadoUmaVez = false;
+
+    const cfg = {
+        paciente: {
+            canvas: document.getElementById('canvasAssinatura'),
+            img:    document.getElementById('previewAssinatura'),
+            hint:   document.getElementById('hintAssinatura'),
+            btn:    document.getElementById('btnLimparPaciente'),
+            label:  () => document.getElementById('nomePaciente').value || 'Paciente',
+            subtitulo: () => {
+                const nome = document.getElementById('nomePaciente').value;
+                return nome ? `Assinatura de ${nome}` : 'Assine no espaço abaixo com o dedo ou mouse';
+            }
+        },
+        clinica: {
+            canvas: document.getElementById('canvasClinica'),
+            img:    document.getElementById('previewClinica'),
+            hint:   document.getElementById('hintClinica'),
+            btn:    document.getElementById('btnLimparClinica'),
+            label:  () => 'VITARA',
+            subtitulo: () => 'Assinatura da Clínica Vitara'
+        }
+    };
 
     function getPos(e, canvas) {
         const rect = canvas.getBoundingClientRect();
@@ -582,54 +604,52 @@
         ctx.lineJoin = 'round';
     }
 
-    function abrirModal() {
+    function abrirModal(quem) {
+        assinanteAtivo = quem;
         modal.classList.add('aberto');
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
             initCanvas(canvasModal, ctxModal);
             limparModal();
         }, 50);
-        const nome = document.getElementById('nomePaciente').value;
-        document.getElementById('modalSubtitulo').textContent =
-            nome ? `Assinatura de ${nome}` : 'Assine no espaço abaixo com o dedo ou mouse';
+        document.getElementById('modalSubtitulo').textContent = cfg[quem].subtitulo();
     }
 
     function fecharModal() {
         modal.classList.remove('aberto');
         document.body.style.overflow = '';
+        assinanteAtivo = null;
     }
 
     function limparModal() {
         ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
     }
 
-    function limparAssinatura() {
-        ctxPreview.clearRect(0, 0, canvasPreview.width, canvasPreview.height);
-        imgPreview.style.display = 'none';
-        canvasPreview.style.display = 'block';
-        canvasPreview.classList.remove('assinado');
-        hint.style.display = 'block';
-        btnLimpar.style.display = 'none';
-        assinadoUmaVez = false;
+    function limparAssinatura(quem) {
+        const c = cfg[quem];
+        const ctx = c.canvas.getContext('2d');
+        ctx.clearRect(0, 0, c.canvas.width, c.canvas.height);
+        c.img.style.display = 'none';
+        c.canvas.style.display = 'block';
+        c.canvas.classList.remove('assinado');
+        c.hint.style.display = 'block';
+        c.btn.style.display = 'none';
     }
 
     function confirmarAssinatura() {
+        if (!assinanteAtivo) return;
         if (estaVazio(canvasModal, ctxModal)) {
             alert('Por favor, realize a assinatura antes de confirmar.');
             return;
         }
-
-        /* Copia para o canvas de preview */
-        initCanvas(canvasPreview, ctxPreview);
-        ctxPreview.drawImage(canvasModal, 0, 0, canvasPreview.width, canvasPreview.height);
-        canvasPreview.classList.add('assinado');
-
-        /* Salva como imagem para impressão */
-        imgPreview.src = canvasPreview.toDataURL('image/png');
-
-        hint.style.display = 'none';
-        btnLimpar.style.display = 'inline-block';
-        assinadoUmaVez = true;
+        const c = cfg[assinanteAtivo];
+        const ctx = c.canvas.getContext('2d');
+        initCanvas(c.canvas, ctx);
+        ctx.drawImage(canvasModal, 0, 0, c.canvas.width, c.canvas.height);
+        c.canvas.classList.add('assinado');
+        c.img.src = c.canvas.toDataURL('image/png');
+        c.hint.style.display = 'none';
+        c.btn.style.display = 'inline-block';
         fecharModal();
     }
 
