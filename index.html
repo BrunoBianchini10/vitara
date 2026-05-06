@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Ficha de Adesão</title>
-
-    <!-- Fonte moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">		
 
     <style>
@@ -16,9 +14,7 @@
             --border: #e5e7eb;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -29,7 +25,7 @@
         }
 
         .container {
-		position: relative;
+            position: relative;
             max-width: 900px;
             margin: auto;
             background: var(--card);
@@ -46,9 +42,7 @@
             margin-bottom: 50px;
         }
 
-        .section {
-            margin-bottom: 40px;
-        }
+        .section { margin-bottom: 40px; }
 
         .section-title {
             font-size: 16px;
@@ -59,9 +53,7 @@
             letter-spacing: 1px;
         }
 		
-		.txt-center{
-			text-align: center;
-		}
+        .txt-center { text-align: center; }
 
         .grid {
             display: grid;
@@ -69,11 +61,11 @@
             gap: 20px;
         }
 		
-		.grid-pagamento {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
-			gap: 20px;
-		}
+        .grid-pagamento {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+            gap: 20px;
+        }
 
         label {
             font-size: 13px;
@@ -97,10 +89,7 @@
             box-shadow: 0 0 0 2px rgba(139,111,71,0.15);
         }
 
-        .valor {
-            font-size: 18px;
-            font-weight: 600;
-        }
+        .valor { font-size: 18px; font-weight: 600; }
 
         .declaracao {
             background: #fafafa;
@@ -108,11 +97,10 @@
             border-radius: 12px;
             font-size: 14px;
             line-height: 1.6;
+            border-left: 4px solid var(--secondary);
         }
 
-        .rodape {
-            margin-top: 60px;
-        }
+        .rodape { margin-top: 60px; }
 
         .assinaturas {
             display: grid;
@@ -121,9 +109,7 @@
             margin-top: 40px;
         }
 
-        .assinatura {
-            text-align: center;
-        }
+        .assinatura { text-align: center; }
 
         .linha {
             border-top: 1px solid #999;
@@ -133,287 +119,330 @@
         .assinatura span {
             font-size: 13px;
             color: #555;
+            letter-spacing: 0.5px;
         }
 		
-		.pagamentos {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-			gap: 16px;
-		}
-
-		.opcao-pagamento {
-			border: 1px solid var(--border);
-			border-radius: 12px;
-			padding: 14px;
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			cursor: pointer;
-			transition: 0.2s;
-		}
-
-		.opcao-pagamento input {
-			accent-color: var(--secondary);
-		}
-
-		.opcao-pagamento:hover {
-			border-color: var(--secondary);
-		}
-
-		.parcelas {
-			margin-top: 20px;
-			max-width: 200px;
-			display: none;
-		}
+        .mt-20 { margin-top: 20px; }
+        .mt-30 { margin-top: 30px; }
+        .mb-30 { margin-bottom: 30px !important; }
 		
-		.mt-20 { margin-top: 20px; }
-		.mt-30 { margin-top: 30px; }
-		.mb-30 { margin-bottom: 30px !important; }
-		
-		.select-pequeno {
-			max-width: 250px;
-		}
-		
-		.select-parcelas {
-			max-width: 100px;
-		}
-		
-		.declaracao {
-			border-left: 4px solid var(--secondary);
-		}
-		
-		.assinatura span {
-			letter-spacing: 0.5px;
-		}
-		
-		
-.logo {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    z-index: 10;
-}
+        .select-pequeno { max-width: 250px; }
+        .select-parcelas { max-width: 100px; }
 
-.logo img {
-    max-height: 80px;
-    max-width: 220px;
-    object-fit: contain;
-}
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 10;
+        }
 
+        .logo img {
+            max-height: 80px;
+            max-width: 220px;
+            object-fit: contain;
+        }
 
+        /* ── Assinatura Digital ── */
+        .assinatura-digital-wrapper {
+            text-align: center;
+        }
 
-        @page {
-    size: A4;
-    margin: 15mm;
-}
+        .canvas-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
 
-@media print {
+        #canvasAssinatura {
+            border: 1.5px dashed #aaa;
+            border-radius: 10px;
+            background: #fafafa;
+            cursor: crosshair;
+            display: block;
+            width: 100%;
+            touch-action: none;
+        }
 
-    body {
-        background: white;
-        padding: 0;
-        margin: 0;
-        font-size: 13px;
-    }
+        #canvasAssinatura.assinado {
+            border-style: solid;
+            border-color: var(--secondary);
+            background: #fff;
+        }
 
-    .container {
-		position: relative;
-        width: 100%;
-        max-width: none;
-        padding: 0;
-        box-shadow: none;
-        border-radius: 0;
-    }
-	
-	.logo {
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		z-index: 10;
-	}
+        .canvas-hint {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 6px;
+            font-style: italic;
+        }
 
-	.logo img {
-		max-height: 60px;
-		max-width: 200px;
-		object-fit: contain;
-	}
+        .btn-assinar, .btn-limpar {
+            border: none;
+            border-radius: 8px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+        }
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 25px;
-    }
+        .btn-assinar {
+            background: var(--secondary);
+            color: #fff;
+            margin-top: 10px;
+        }
 
-    .section {
-        margin-bottom: 18px;
-        page-break-inside: avoid;
-    }
+        .btn-assinar:hover { background: #7a5e38; }
 
-    .section-title {
-        font-size: 14px;
-        margin-bottom: 12px;
-    }
+        .btn-limpar {
+            background: #f0f0f0;
+            color: #555;
+            margin-top: 6px;
+            margin-left: 8px;
+        }
 
-    label {
-        font-size: 12px;
-    }
+        .btn-limpar:hover { background: #e0e0e0; }
 
-    input,
-    select {
-        padding: 9px 12px;
-        font-size: 13px;
-    }
+        /* Modal overlay */
+        #modalAssinatura {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .valor {
-        font-size: 16px;
-    }
+        #modalAssinatura.aberto {
+            display: flex;
+        }
 
-    .declaracao {
-        font-size: 13px;
-        padding: 16px;
-        line-height: 1.5;
-        page-break-inside: avoid;
-    }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            width: 90%;
+            max-width: 520px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
 
-    .rodape {
-        margin-top: 30px;
-        page-break-inside: avoid;
-    }
+        .modal-titulo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            text-align: center;
+        }
 
-    .assinaturas {
-        margin-top: 30px;
-        page-break-inside: avoid;
-    }
+        .modal-subtitulo {
+            font-size: 13px;
+            color: #888;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .linha {
-        margin-bottom: 6px;
-    }
-}
+        #canvasModal {
+            border: 1.5px dashed #bbb;
+            border-radius: 10px;
+            background: #fafafa;
+            cursor: crosshair;
+            display: block;
+            width: 100%;
+            touch-action: none;
+        }
 
+        .modal-acoes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-confirmar {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-confirmar:hover { background: #7a5e38; }
+
+        .btn-cancelar {
+            background: #f0f0f0;
+            color: #555;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-cancelar:hover { background: #e0e0e0; }
+
+        .btn-limpar-modal {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-limpar-modal:hover { color: #555; border-color: #aaa; }
+
+        /* Miniatura da assinatura salva */
+        #previewAssinatura {
+            display: none;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            padding: 8px;
+            width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        /* ── Print ── */
+        @page { size: A4; margin: 15mm; }
+
+        @media print {
+            body { background: white; padding: 0; margin: 0; font-size: 13px; }
+            .container { width: 100%; max-width: none; padding: 0; box-shadow: none; border-radius: 0; position: relative; }
+            .logo { position: absolute; top: 0; right: 0; z-index: 10; }
+            .logo img { max-height: 60px; max-width: 200px; object-fit: contain; }
+            h1 { font-size: 24px; margin-bottom: 25px; }
+            .section { margin-bottom: 18px; page-break-inside: avoid; }
+            .section-title { font-size: 14px; margin-bottom: 12px; }
+            label { font-size: 12px; }
+            input, select { padding: 9px 12px; font-size: 13px; }
+            .valor { font-size: 16px; }
+            .declaracao { font-size: 13px; padding: 16px; line-height: 1.5; page-break-inside: avoid; }
+            .rodape { margin-top: 30px; page-break-inside: avoid; }
+            .assinaturas { margin-top: 30px; page-break-inside: avoid; }
+            .linha { margin-bottom: 6px; }
+
+            /* Esconde controles e mostra apenas a imagem da assinatura */
+            .btn-assinar, .btn-limpar, .canvas-hint, #canvasAssinatura { display: none !important; }
+            #previewAssinatura { display: block !important; max-height: 70px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
 
-	<div class="logo">
-		<!-- quando tiver a imagem -->
-		<img src="logotipo-lm.png" alt="Clínica Vitara">
-	</div>
+    <div class="logo">
+        <img src="logotipo-lm.png" alt="Clínica Vitara">
+    </div>
+
     <h1>Ficha de Adesão ao Protocolo</h1>	
 	
-	<!-- CLÍNICA -->
+    <!-- CLÍNICA -->
     <div class="section">
         <div class="section-title txt-center">Clínica Vitara</div>
-         <!-- <label>Nome da clínica</label>  -->
-         <!-- <input type="text" id="nomeClinica" value="VITARA">  -->
     </div> 
 
     <!-- PACIENTE -->
     <div class="section">
         <div class="section-title">Paciente</div>        					
-				<div>
-					<label>Nome</label>
-					<input type="text" id="nomePaciente">
-				</div>
-				<div class="mt-20"></div>
-				<div class="grid">
-				<div>
-					<label>CPF</label>
-					<input type="text" id="cpf" maxlength="14">
-				</div>
-				<div>
-					<label>Telefone</label>
-					<input type="text" id="telefone" maxlength="15">
-				</div>
-			</div>
+        <div>
+            <label>Nome</label>
+            <input type="text" id="nomePaciente">
+        </div>
+        <div class="mt-20"></div>
+        <div class="grid">
+            <div>
+                <label>CPF</label>
+                <input type="text" id="cpf" maxlength="14">
+            </div>
+            <div>
+                <label>Telefone</label>
+                <input type="text" id="telefone" maxlength="15">
+            </div>
+        </div>
     </div>
 
     <!-- PROTOCOLO -->
     <div class="section">
         <div class="section-title">Protocolo</div>
+        <div>
+            <label>Nome do protocolo</label>
+            <select id="protocolo" onchange="atualizarValor()">
+                <option value="">Selecione</option>
+                <option value="500">Queda de Cabelo</option>
+                <option value="1000">Acelerador de Metabolismo</option>
+                <option value="1100">Esteatose Hepática</option>
+                <option value="1200">Imunidade</option>
+                <option value="2000">Ganho de Massa Muscular / BCAA</option>
+                <option value="1800">Antioxidante</option>
+                <option value="1500">Resistência à Insulina</option>
+                <option value="1250">Lipedema</option>
+                <option value="750">Saúde Intestinal / Disbiose</option>
+            </select>
+        </div>
+        <div class="mt-20"></div>
+        <div class="grid">
             <div>
-                <label>Nome do protocolo</label>
-                <select id="protocolo" onchange="atualizarValor()">
-                    <option value="">Selecione</option>
-                    <option value="500">Queda de Cabelo</option>
-                    <option value="1000">Acelerador de Metabolismo</option>
-                    <option value="1100">Esteatose Hepática</option>
-					<option value="1200">Imunidade</option>
-					<option value="2000">Ganho de Massa Muscular / BCAA</option>
-					<option value="1800">Antioxidante</option>
-					<option value="1500">Resistência à Insulina</option>
-					<option value="1250">Lipedema</option>
-					<option value="750">Saúde Intestinal / Disbiose</option>
+                <label>Sessões</label>
+                <select id="sessoes"></select>
+            </div>
+            <div>
+                <label>Frequência</label>
+                <select>
+                    <option>1x por semana</option>
+                    <option>2x por semana</option>
+                    <option>3x por semana</option>
                 </select>
             </div>
-			<div class="mt-20"></div>
-			<div class="grid">
-				<div>
-					<label>Sessões</label>
-					<select>
-						<script>
-							for (let i = 1; i <= 30; i++) {
-								document.write(`<option>${i}</option>`);
-							}
-						</script>
-					</select>										
-				</div>
-
-				<div>
-					<label>Frequência</label>
-					<select>
-						<option>1x por semana</option>
-						<option>2x por semana</option>
-						<option>3x por semana</option>
-					</select>
-				</div>
-			</div>
+        </div>
     </div>
 
     <!-- INVESTIMENTO -->
     <div class="section">
         <div class="section-title">Investimento</div>
-
         <label>Valor total (R$)</label>
         <input type="number" id="valorTotal" class="valor" step="0.01">
     </div>
 	
-	<!-- FORMA DE PAGAMENTO -->
-	<div class="section">
-		<div class="section-title">Forma de Pagamento</div>
-
-		<div class="grid-pagamento">
-			<div>
-				<label>Opção</label>
-				<!-- <select id="formaPagamento"> -->
-				<select id="formaPagamento" class="select-pequeno">
-					<option value="">Selecione</option>
-					<option value="Dinheiro">Dinheiro</option>
-					<option value="Pix">Pix</option>
-					<option value="Débito">Débito</option>
-					<option value="Crédito">Crédito</option>
-				</select>
-			</div>
-
-			<div id="campoParcelas" style="display:none;">
-				<label>Parcelas</label>
-				<select class="select-parcelas">
-					<script>
-						for (let i = 1; i <= 12; i++) {
-							document.write(`<option>${i}x</option>`);
-						}
-					</script>
-				</select>
-			</div>
-		</div>
-	</div>
-
-
+    <!-- FORMA DE PAGAMENTO -->
+    <div class="section">
+        <div class="section-title">Forma de Pagamento</div>
+        <div class="grid-pagamento">
+            <div>
+                <label>Opção</label>
+                <select id="formaPagamento" class="select-pequeno">
+                    <option value="">Selecione</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Débito">Débito</option>
+                    <option value="Crédito">Crédito</option>
+                </select>
+            </div>
+            <div id="campoParcelas" style="display:none;">
+                <label>Parcelas</label>
+                <select id="selectParcelas" class="select-parcelas"></select>
+            </div>
+        </div>
+    </div>
 
     <!-- DECLARAÇÃO -->
     <div class="section">
         <div class="section-title">Declaração</div>
-
         <div class="declaracao">
             Declaro estar ciente de que o protocolo é personalizado, que os resultados podem variar,
             que não há garantia de resultados específicos, que seguirei as orientações da equipe
@@ -424,16 +453,28 @@
     <!-- RODAPÉ -->
     <div class="rodape">
         <div>
-			<label>Saquarema-RJ, _______  de  ____________________  de 20_____.</label>
-		</div>
-		</br>
-		</br>        
+            <label>Saquarema-RJ, _______  de  ____________________  de 20_____.</label>
+        </div>
+        <br><br>        
         <div class="assinaturas">
-            <div class="assinatura">
-                <div class="linha"></div>
+
+            <!-- Assinatura do Paciente com canvas -->
+            <div class="assinatura assinatura-digital-wrapper">
+                <!-- Mostrado na tela -->
+                <canvas id="canvasAssinatura" height="80"></canvas>
+                <!-- Mostrado na impressão -->
+                <img id="previewAssinatura" alt="Assinatura do paciente">
+
+                <div class="canvas-hint" id="hintAssinatura">Toque ou clique aqui para assinar</div>
+                <div>
+                    <button class="btn-assinar" onclick="abrirModal()">✍ Assinar</button>
+                    <button class="btn-limpar" onclick="limparAssinatura()" id="btnLimpar" style="display:none;">Limpar</button>
+                </div>
+                <br>
                 <span id="assinaturaPaciente">Paciente</span>
             </div>
 
+            <!-- Assinatura da clínica (linha tradicional) -->
             <div class="assinatura">
                 <div class="linha"></div>
                 <span id="assinaturaClinica">VITARA</span>
@@ -443,7 +484,37 @@
 
 </div>
 
+<!-- ── Modal de Assinatura ── -->
+<div id="modalAssinatura">
+    <div class="modal-box">
+        <div class="modal-titulo">Assinatura Digital</div>
+        <div class="modal-subtitulo" id="modalSubtitulo">Assine no espaço abaixo com o dedo ou mouse</div>
+        <canvas id="canvasModal" height="200"></canvas>
+        <div class="modal-acoes">
+            <button class="btn-limpar-modal" onclick="limparModal()">Limpar</button>
+            <button class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+            <button class="btn-confirmar" onclick="confirmarAssinatura()">Confirmar assinatura</button>
+        </div>
+    </div>
+</div>
+
 <script>
+    /* ── Preenche selects via JS ── */
+    const sessoes = document.getElementById('sessoes');
+    for (let i = 1; i <= 30; i++) {
+        const o = document.createElement('option');
+        o.textContent = i;
+        sessoes.appendChild(o);
+    }
+
+    const selectParcelas = document.getElementById('selectParcelas');
+    for (let i = 1; i <= 12; i++) {
+        const o = document.createElement('option');
+        o.textContent = i + 'x';
+        selectParcelas.appendChild(o);
+    }
+
+    /* ── Máscaras ── */
     cpf.addEventListener('input', e => {
         let v = e.target.value.replace(/\D/g, '');
         v = v.replace(/(\d{3})(\d)/, '$1.$2');
@@ -467,16 +538,138 @@
         assinaturaPaciente.textContent = nomePaciente.value || 'Paciente';
     });
 
-    <!-- nomeClinica.addEventListener('input', () => { -->
-        <!-- assinaturaClinica.textContent = nomeClinica.value || 'VITARA'; -->
-    <!-- }); -->
-	
     const formaPagamento = document.getElementById('formaPagamento');
     const campoParcelas = document.getElementById('campoParcelas');
-
     formaPagamento.addEventListener('change', () => {
-        campoParcelas.style.display =
-            formaPagamento.value === 'Crédito' ? 'block' : 'none';
+        campoParcelas.style.display = formaPagamento.value === 'Crédito' ? 'block' : 'none';
+    });
+
+    /* ── Assinatura Digital ── */
+    const modal = document.getElementById('modalAssinatura');
+    const canvasModal = document.getElementById('canvasModal');
+    const ctxModal = canvasModal.getContext('2d');
+    const canvasPreview = document.getElementById('canvasAssinatura');
+    const ctxPreview = canvasPreview.getContext('2d');
+    const imgPreview = document.getElementById('previewAssinatura');
+    const hint = document.getElementById('hintAssinatura');
+    const btnLimpar = document.getElementById('btnLimpar');
+
+    let desenhando = false;
+    let ultimoX = 0, ultimoY = 0;
+    let assinadoUmaVez = false;
+
+    function getPos(e, canvas) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        if (e.touches) {
+            return {
+                x: (e.touches[0].clientX - rect.left) * scaleX,
+                y: (e.touches[0].clientY - rect.top) * scaleY
+            };
+        }
+        return {
+            x: (e.clientX - rect.left) * scaleX,
+            y: (e.clientY - rect.top) * scaleY
+        };
+    }
+
+    function initCanvas(canvas, ctx) {
+        canvas.width = canvas.offsetWidth || 460;
+        ctx.strokeStyle = '#1f2933';
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+    }
+
+    function abrirModal() {
+        modal.classList.add('aberto');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            initCanvas(canvasModal, ctxModal);
+            limparModal();
+        }, 50);
+        const nome = document.getElementById('nomePaciente').value;
+        document.getElementById('modalSubtitulo').textContent =
+            nome ? `Assinatura de ${nome}` : 'Assine no espaço abaixo com o dedo ou mouse';
+    }
+
+    function fecharModal() {
+        modal.classList.remove('aberto');
+        document.body.style.overflow = '';
+    }
+
+    function limparModal() {
+        ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
+    }
+
+    function limparAssinatura() {
+        ctxPreview.clearRect(0, 0, canvasPreview.width, canvasPreview.height);
+        imgPreview.style.display = 'none';
+        canvasPreview.style.display = 'block';
+        canvasPreview.classList.remove('assinado');
+        hint.style.display = 'block';
+        btnLimpar.style.display = 'none';
+        assinadoUmaVez = false;
+    }
+
+    function confirmarAssinatura() {
+        if (estaVazio(canvasModal, ctxModal)) {
+            alert('Por favor, realize a assinatura antes de confirmar.');
+            return;
+        }
+
+        /* Copia para o canvas de preview */
+        initCanvas(canvasPreview, ctxPreview);
+        ctxPreview.drawImage(canvasModal, 0, 0, canvasPreview.width, canvasPreview.height);
+        canvasPreview.classList.add('assinado');
+
+        /* Salva como imagem para impressão */
+        imgPreview.src = canvasPreview.toDataURL('image/png');
+
+        hint.style.display = 'none';
+        btnLimpar.style.display = 'inline-block';
+        assinadoUmaVez = true;
+        fecharModal();
+    }
+
+    function estaVazio(canvas, ctx) {
+        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        return !data.some(v => v !== 0);
+    }
+
+    /* Eventos de desenho no modal */
+    function iniciarDesenho(e) {
+        desenhando = true;
+        const p = getPos(e, canvasModal);
+        ultimoX = p.x; ultimoY = p.y;
+        e.preventDefault();
+    }
+
+    function desenhar(e) {
+        if (!desenhando) return;
+        e.preventDefault();
+        const p = getPos(e, canvasModal);
+        ctxModal.beginPath();
+        ctxModal.moveTo(ultimoX, ultimoY);
+        ctxModal.lineTo(p.x, p.y);
+        ctxModal.stroke();
+        ultimoX = p.x; ultimoY = p.y;
+    }
+
+    function pararDesenho() { desenhando = false; }
+
+    canvasModal.addEventListener('mousedown', iniciarDesenho);
+    canvasModal.addEventListener('mousemove', desenhar);
+    canvasModal.addEventListener('mouseup', pararDesenho);
+    canvasModal.addEventListener('mouseleave', pararDesenho);
+    canvasModal.addEventListener('touchstart', iniciarDesenho, { passive: false });
+    canvasModal.addEventListener('touchmove', desenhar, { passive: false });
+    canvasModal.addEventListener('touchend', pararDesenho);
+
+    /* Fecha modal ao clicar fora */
+    modal.addEventListener('click', e => {
+        if (e.target === modal) fecharModal();
     });
 </script>
 
